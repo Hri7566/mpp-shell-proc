@@ -32,6 +32,7 @@ const whitelist = [
 ];
 
 cl.on("a", async msg => {
+    if (!whitelist.includes(msg.p._id)) return;
     console.log(`${msg.p._id.substring(0, 6)} ${msg.p.name}: ${msg.a}`);
     if (!msg.a.startsWith(evalPrefix)) return;
 
@@ -46,6 +47,7 @@ cl.on("a", async msg => {
 let proc: ChildProcessWithoutNullStreams | undefined;
 
 cl.on("a", async msg => {
+    if (!whitelist.includes(msg.p._id)) return;
     if (!msg.a.startsWith(prefix)) return;
 
     try {
